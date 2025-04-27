@@ -1,3 +1,4 @@
+
 .mat-form-field {
     width: 90%;
   }
@@ -20,10 +21,13 @@
     height: 650px;
   }
   
+  .desc {
+    width: 95%;
+  }
+  
   table {
     width: 100%;
   }
-  
   
   .mat-column-data {
     width: 150px;
@@ -63,19 +67,8 @@
     padding-top: 10px;
   }
   
-  .filtro {
-    width: 250px;
-    float: right;
-    padding: 20px ;
-  }
-  
-  .btn-search {
-    margin-left: 10px;
-    height: 50px;
-    margin-bottom: 25px;
-  }
-  
-  tr.mat-footer-row td {
-    font-weight: bold;
+  h3 {
+    text-align: center;
+    padding: 10px 10px 5px 10px;
   }
   

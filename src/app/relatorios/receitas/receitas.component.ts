@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
 
 @Component({
-  selector: 'app-despesas',
+  selector: 'app-receitas',
   imports: [MaterialModule],
-  templateUrl: './despesas.component.html',
-  styleUrl: './despesas.component.scss'
+  templateUrl: './receitas.component.html',
+  styleUrl: './receitas.component.scss'
 })
-export class DespesasComponent {
-
+export class ReceitasComponent {
   dataSource: any[] = [];
   displayedColumns = ['data','valor','tipo','fixo','descricao','acoes'];
 
@@ -16,6 +15,6 @@ export class DespesasComponent {
     private menuService: MenuService
   ) {
     // notificar ao menu em qual componente estou
-    this.menuService.ondeEstou = MenuTypeEnum.RELATORIO_DESPESA;
-  }
+    this.menuService.ondeEstou = MenuTypeEnum.RELATORIO_RECEITA;
+   }
 }

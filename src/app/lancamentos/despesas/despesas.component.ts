@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-despesas',
-  imports: [],
+  imports: [MaterialModule],
   templateUrl: './despesas.component.html',
   styleUrl: './despesas.component.scss'
 })
