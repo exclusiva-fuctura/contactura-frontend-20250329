@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DaoService } from './services/dao.service';
 import { AutenticadorService } from './services/autenticador.service';
 import { AppState } from '../app.state';
+import { MenuService } from './services/menu.service';
+import { MaterialModule } from '../material/material.module';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
@@ -16,6 +19,7 @@ import { AppState } from '../app.state';
   providers: [
     AppState,
     DaoService,
+    MenuService,
     AutenticadorService,
   ]
 })
