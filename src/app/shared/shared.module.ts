@@ -4,8 +4,7 @@ import { DaoService } from './services/dao.service';
 import { AutenticadorService } from './services/autenticador.service';
 import { AppState } from '../app.state';
 import { MenuService } from './services/menu.service';
-import { MaterialModule } from '../material/material.module';
-import { MenuComponent } from './components/menu/menu.component';
+import { LancamentosService } from './services/lancamentos.service';
 
 
 @NgModule({
@@ -20,6 +19,7 @@ import { MenuComponent } from './components/menu/menu.component';
     AppState,
     DaoService,
     MenuService,
+    LancamentosService,
     AutenticadorService,
   ]
 })
