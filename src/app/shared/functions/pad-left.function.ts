@@ -3,7 +3,7 @@
  * @param str string
  * @param size repetições máxima
  * @param char elemento que será repetido
- * @returns
+ * @returns resultado formatado
  */
 export function padLeft(str: string, size: number, char?: string): string {
   if (!char) {

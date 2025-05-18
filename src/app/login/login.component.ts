@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { AutenticadorService } from '../shared/services/autenticador.service';
-import { MaterialModule } from '../material/material.module';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+// libs
+import Swal from 'sweetalert2';
+// Services
+import { StateService } from '../shared/services/state.service';
+import { AutenticadorService } from '../shared/services/autenticador.service';
+// Modules
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 import { HttpStatusCode } from '@angular/common/http';
-import { AppState } from '../app.state';
+
 
 @Component({
   selector: 'app-login',
@@ -22,18 +26,24 @@ export class LoginComponent {
     private autenticadorService: AutenticadorService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private state: AppState
+    private state: StateService
   ){
-    this.init();
+    this.iniciarFormulario();
   }
 
-  private init(): void {
+  /**
+   * Metodo que ira iniciar o formulario
+   */
+  private iniciarFormulario(): void {
     this.formulario = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
+  /**
+   * Metodo que irá processar a autenticação
+   */
   private login(): void {
     let login = this.formulario.value;
     this.autenticadorService.login(login).subscribe({
@@ -54,6 +64,9 @@ export class LoginComponent {
     console.log('fim do metodo')
   }
 
+  /**
+   * Metodo que será chamado pelo evento click do template(html)
+   */
   onLogon(): void {
     this.login();
   }

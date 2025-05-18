@@ -4,13 +4,7 @@
     <app-menu></app-menu>
     <!-- logout -->
     <app-logout></app-logout>
-  
-    <div class="logout">
-      <button mat-fab color="primary">
-        <mat-icon aria-hidden="false">logout</mat-icon>
-      </button>
-    </div>
-  
+    
     <h1>CADASTRO DE RECEITAS</h1>
   
     <form [formGroup]="formulario" novalidate>
@@ -58,7 +52,7 @@
         <!-- linha 3 -->
         <mat-grid-tile class="coluna botoes" colspan="3">
             <button mat-raised-button>Limpar</button>
-            <button mat-raised-button color="primary" [disabled]="formulario.invalid">Editar / Salvar</button>
+            <button mat-raised-button color="primary" >Editar / Salvar</button>
         </mat-grid-tile>
       </mat-grid-list>
     </form>

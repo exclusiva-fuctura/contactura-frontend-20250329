@@ -11,7 +11,7 @@ export class Lancamento {
   tipo: string;
   valor: number;
 
-  constructor(lancamento:any, isReceita: boolean) {
+  constructor(lancamento:IDespesa | IReceita, isReceita: boolean) {
     this.data = lancamento.data;
     this.descricao = lancamento.descricao;
     this.ehFixo = lancamento.ehFixo;
@@ -22,33 +22,4 @@ export class Lancamento {
     if (lancamento.id) this.id = lancamento.id;
   }
 
-  private toDespesa(): IDespesa {
-    return {
-      id: this.id,
-      data: this.data,
-      descricao: this.descricao,
-      ehFixo: this.ehFixo,
-      tipo: this.tipo,
-      valor: this.valor
-    }
-  }
-
-  private toReceita(): IReceita {
-    return {
-      id: this.id,
-      data: this.data,
-      descricao: this.descricao,
-      ehFixo: this.ehFixo,
-      tipo: this.tipo,
-      valor: this.valor
-    }
-  }
-
-  extractLancamento(): any {
-    if (this.ehReceita) {
-      return this.toReceita();
-    } else {
-      return this.toDespesa();
-    }
-  }
 }

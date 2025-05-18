@@ -7,7 +7,7 @@
   
     <h1>RELATÓRIO DE DESPESAS</h1>
     <br>
-    <form novalidate>
+    <form [formGroup]="formulario" novalidate>
       <mat-grid-list cols="4" rowHeight="4:1">
         <mat-grid-tile class="coluna"></mat-grid-tile>
         <mat-grid-tile class="coluna"></mat-grid-tile>
@@ -69,10 +69,10 @@
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef> Ações </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-mini-fab color="primary" aria-label="Remover despesa">
+            <button mat-mini-fab color="primary" aria-label="Remover despesa" (click)="onDelete(element)">
               <mat-icon matTooltip="Remover">delete</mat-icon>
             </button>
-            <button mat-mini-fab color="primary" aria-label="Editar despesa" >
+            <button mat-mini-fab color="primary" aria-label="Editar despesa" (click)="onEdit(element)">
               <mat-icon matTooltip="Editar">edit</mat-icon>
             </button>
           </td>
