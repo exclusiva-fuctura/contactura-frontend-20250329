@@ -202,6 +202,9 @@ export class DespesasComponent implements OnDestroy {
       data: moment().format(),
       ehFixo: false
     });
+    // sair do módo edicao e limpar a despesa selecionada
+    this.lancamentosService.modoEdicao = false;
+    this.lancamentosService.limparLancamentoSelecionado();
   }
 
 }

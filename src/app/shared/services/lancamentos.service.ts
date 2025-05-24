@@ -51,6 +51,13 @@ export class LancamentosService {
   }
 
   /**
+   * Remover o lancamento selecionado do sessionStorage(banco de dados(chave/valor) do navegdor)
+   */
+  limparLancamentoSelecionado(): void {
+    sessionStorage.removeItem(this.chaveStorage);
+  }
+
+  /**
    * Recupera o lancamento selecionado do sessionStorage(banco de dados(chave/valor) do navegdor)
    * @returns retorna objeto lancamento selecionada
    */
