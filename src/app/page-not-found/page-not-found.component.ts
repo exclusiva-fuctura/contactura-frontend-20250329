@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+// Modules
 import { MaterialModule } from '../material/material.module';
+
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,4 +12,12 @@ import { MaterialModule } from '../material/material.module';
 })
 export class PageNotFoundComponent {
 
+  constructor(
+    private router: Router
+  ) {} 
+  
+
+  onLogout(): void {
+    this.router.navigate(['/login']);
+  }
 }

@@ -82,6 +82,27 @@ export class DashboardComponent {
     });
   }
 
+  private removerReceita(id: number): void {    
+    this.lancamentoService.removerLancamento(id).subscribe({
+      next: (response) => {
+        if (response.status === HttpStatusCode.Ok) {
+          Swal.fire(
+            'SUCESSO: Remover Receita',
+            'Receita removida com sucesso',
+            'success'
+          )
+        }
+      },
+      error: (err) => {
+        Swal.fire(
+          'ALERTA: Remover Receita',
+          err.error.mensagem ? err.error.mensagem : 'Ocorrer um erro inesperado. ['+ err.error.error +']',
+          'warning'
+        )
+      }
+    });
+  }
+
   /**
    * Método que responde a um evento para remover a despesa da base
    * @param despesa instancia do objeto despesa
@@ -112,7 +133,6 @@ export class DashboardComponent {
   onEditDespesa(item: Lancamento): void {
     if(item) {
       this.lancamentoService.modoEdicao = true;
-      // this.lancamentoService.sendSelecionada(lancamento);
       this.lancamentoService.gravaLancamentoSelecionado(item);
       this.router.navigate(['lancamentos/despesa/'+item.id]);
     }
@@ -120,17 +140,36 @@ export class DashboardComponent {
 
   /**
    * Método que responde a um evento para remover a receita
-   * @param despesa instancia do objeto receita
+   * @param receita instancia do objeto receita
    */
   onDeleteReceita(receita: IReceita): void {
-
+  if(receita) {
+      Swal.fire({
+        title: 'Remover Receita',
+        text: `Deseja remover a receita '${receita.descricao.toUpperCase()}' ?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, remova!'
+      }).then((resultado) => {
+        if (resultado.isConfirmed) {
+          const id = receita.id ? receita.id : 0;
+          this.removerReceita(id);
+        }
+      });
+    }
   }
 
   /**
    * Método que responde a um evento para editar a receita
-   * @param despesa instancia do objeto receita
+   * @param item instancia do objeto lancamento
    */  
-  onEditReceita(receita: IReceita): void {
-
+  onEditReceita(item: Lancamento): void {
+    if(item) {
+      this.lancamentoService.modoEdicao = true;
+      this.lancamentoService.gravaLancamentoSelecionado(item);
+      this.router.navigate(['lancamentos/receita/'+item.id]);
+    }
   }
 }

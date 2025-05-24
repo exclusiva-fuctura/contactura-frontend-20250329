@@ -25,12 +25,12 @@
   }
   
   .mat-column-data {
-    width: 100px;
+    width: 150px;
     text-align: center;
   }
   
   .mat-column-valor {
-    width: 100px;
+    width: 150px;
     text-align: right;
   }
   
@@ -50,10 +50,14 @@
   }
   
   .mat-column-acoes {
-    width: 100px;
+    width: 200px;
     text-align: center;
   }
   
+  .mat-mdc-mini-fab {
+    margin: 2px;
+  }
+
   .mat-cell.no-data {
     text-align: left;
   }

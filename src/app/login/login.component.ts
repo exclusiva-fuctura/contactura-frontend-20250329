@@ -71,4 +71,20 @@ export class LoginComponent {
     this.login();
   }
 
+  onCadastro(): void {
+    this.router.navigate(['/cadastro']);
+  }
+
+  onEsqueciSenha(): void {
+    if (this.formulario.value.email === '' || this.formulario.controls['email'].invalid) {
+      Swal.fire({
+        title: 'Atenção',
+        text: 'Informe um e-mail válido para recuperação de senha',
+        icon: 'warning'
+      });
+      return;
+    }
+    this.router.navigate(['/recupera-senha/' + this.formulario.value.email]);
+  }
+
 }

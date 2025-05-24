@@ -54,11 +54,19 @@
     width: 200px;
     text-align: center;
   }
+
+  .mat-mdc-mini-fab {
+    margin: 2px;
+  }
   
   .mat-cell.no-data {
     text-align: left;
   }
-  
+    
+  tr.mat-footer-row td {
+    font-weight: bold;
+  }
+
   h1 {
     padding-top: 10px;
   }

@@ -1,24 +1,31 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MaterialModule } from '../../material/material.module';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+// libs
+import moment from 'moment';
+import Swal from 'sweetalert2';
+// MOdule
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
+import { MaterialModule } from '../../material/material.module';
+// Components
 import { MenuComponent } from '../../shared/components/menu/menu.component';
 import { LogoutComponent } from '../../shared/components/logout/logout.component';
-
-import { ActivatedRoute } from '@angular/router';
+// Enuns
 import { MenuTypeEnum } from '../../shared/enums/menu-type.enum';
+// Services
 import { MenuService } from '../../shared/services/menu.service';
 import { LancamentosService } from '../../shared/services/lancamentos.service';
+// Models
 import { IDespesa } from '../../shared/models/despesa.interface';
-import moment from 'moment';
-import { CommonModule } from '@angular/common';
+import { Lancamento } from '../../shared/models/lancamento';
+// Directives
 import { DinheiroDirective } from '../../shared/directives/dinheiro.directive';
 import { MaiusculoDirective } from '../../shared/directives/maiusculo.directive';
-import Swal from 'sweetalert2';
-import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { SharedModule } from '../../shared/shared.module';
-import { Lancamento } from '../../shared/models/lancamento';
-import { Subscription } from 'rxjs';
-import { padLeft } from '../../shared/functions/pad-left.function';
+// Functions
+import convertToValueDB from '../../shared/functions/convert-value-db.function';
+import convertToDateDB from '../../shared/functions/convert-date-db.function';
 
 @Component({
   selector: 'app-despesas',
@@ -35,11 +42,9 @@ import { padLeft } from '../../shared/functions/pad-left.function';
   templateUrl: './despesas.component.html',
   styleUrl: './despesas.component.scss'
 })
-export class DespesasComponent implements OnDestroy {
+export class DespesasComponent {
   private idEdicao = 0;
   
-  private dataSubscription: Subscription | undefined;
-
   formulario!: FormGroup;
 
   constructor(
@@ -57,12 +62,6 @@ export class DespesasComponent implements OnDestroy {
       this.verificarModoEdicao();
     } else {
       this.lancamentosService.modoEdicao = false;
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
     }
   }
 
@@ -179,12 +178,12 @@ export class DespesasComponent implements OnDestroy {
    */
   onSalvar(): void {
     const despesa: IDespesa = this.formulario.value;
-    // remove as virgulas e epontos
-    despesa.valor = +(despesa.valor.toString().replace('.','').replace(',', ''));
     // formata o valor para 9 digitos com 2 casas decimais
     // exe: 0000000.00
-    despesa.valor = +padLeft(despesa.valor.toString(),9,'0').replace(/(\d{7})(\d{2})/g,"\$1.\$2");
-    despesa.data = moment(despesa.data).format('YYYY-MM-DD');
+    despesa.valor = convertToValueDB(despesa.valor);
+    // converte a data para o formato do banco de dados
+    // exe: 2023-10-01
+    despesa.data = convertToDateDB(despesa.data);
 
     if (this.lancamentosService.modoEdicao) {
       this.atualizar(despesa);

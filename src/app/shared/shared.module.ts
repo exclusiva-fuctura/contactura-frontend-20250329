@@ -7,6 +7,7 @@ import { MenuService } from './services/menu.service';
 import { StateService } from './services/state.service';
 import { LancamentosService } from './services/lancamentos.service';
 import { AutenticadorService } from './services/autenticador.service';
+import { UsuarioService } from './services/usuario.service';
 
 registerLocaleData(localePt, 'pt');
 
@@ -23,6 +24,7 @@ registerLocaleData(localePt, 'pt');
     MenuService,
     StateService,
     LancamentosService,
+    UsuarioService,
     AutenticadorService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }, // Define o locale padrão como pt-BR
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' } // Define o código da moeda padrão como BRL
