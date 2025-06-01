@@ -11,4 +11,8 @@ export class AppSettings {
     static get USUARIO_URL() {
         return "/api/usuario";
     }
+
+    static get SENHA_URL() {
+        return "/api/senha";
+    }
 }

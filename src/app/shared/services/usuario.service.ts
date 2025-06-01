@@ -7,6 +7,7 @@ import { DaoService } from './dao.service';
 // Models
 import { IUsuario } from '../models/usuario.interface';
 import { AppSettings } from '../../app.settings';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,19 @@ import { AppSettings } from '../../app.settings';
 export class UsuarioService {
 
   constructor(
-    private daoService: DaoService
+    private daoService: DaoService,
+    private stateService: StateService
   ) { }
+
+  obterIdUsuario(): string {
+    const token = this.stateService.token;
+    if (token) {
+      const payloadJson = atob(token.split('.')[1]);
+      const payload = JSON.parse(payloadJson);
+      return payload.sub || '';
+    }
+    return '';
+  }
 
   cadastrar(usuario: IUsuario): Observable<HttpResponse<IUsuario>> {
     return this.daoService.post<IUsuario>(AppSettings.USUARIO_URL, usuario, DaoService.MEDIA_TYPE_APP_JSON);

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // libs
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import CryptoJS from 'crypto-js';
 // Services
 import { DaoService } from './dao.service';
 // Models

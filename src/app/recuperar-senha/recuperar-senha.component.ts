@@ -16,6 +16,9 @@ import { LogoutComponent } from '../shared/components/logout/logout.component';
 import { ISenha } from '../shared/models/senha.intarface';
 // Directives
 import { TelefoneDirective } from '../shared/directives/telefone.directive';
+import { RecuperaSenhaService } from '../shared/services/recupera-senha.service';
+import Swal from 'sweetalert2';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-recuperar-senha',
@@ -40,6 +43,7 @@ export class RecuperarSenhaComponent {
     private formBuilder: FormBuilder,
     private menuService: MenuService,
     private activeRouter: ActivatedRoute,
+    private recuperaSenhaService: RecuperaSenhaService
   ) {
     this.menuService.ondeEstou = MenuTypeEnum.RECUPERAR_SENHA;
 
@@ -69,7 +73,34 @@ export class RecuperarSenhaComponent {
   }
 
   private criarNovaSenha(item: ISenha): void {
-    // construir m[etido no backend para tratar a nova senha
+    this.recuperaSenhaService.recuperaSenha(item).subscribe({
+      next: (res) => {
+        if (res.status === HttpStatusCode.NoContent) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Gerar Senha',
+            text: 'Nova senha: ' + item.senha,
+          }).then(() => {
+            this.router.navigate(['/login']);
+          });
+        }
+      },
+      error: (err) => {
+        if (err.status === HttpStatusCode.NotFound) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Gerar Senha',
+            text: err.error.mensagem,
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gerar Senha',
+            text: 'Erro ao gerar nova senha',
+          });
+        }
+      }
+    });
   }
 
   onRecupera(): void {

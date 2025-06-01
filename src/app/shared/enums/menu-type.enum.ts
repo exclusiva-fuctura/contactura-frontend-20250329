@@ -7,4 +7,6 @@ export enum MenuTypeEnum {
   RELATORIO_RECEITA = 'relat_receita',
   LANCAMENTO_DESPESA = 'lanc_despesa',
   LANCAMENTO_RECEITA = 'lanc_receita',
+  ALTERAR_SENHA = 'alterar_senha',
+  EDITAR_USUARIO = 'editar_usuario'
 }

@@ -1,6 +1,10 @@
 {
   "name": "contactura",
   "version": "1.0.0",
+  "engines": {
+    "node": "^19.9.0",
+    "npm": ">=9.6.3"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

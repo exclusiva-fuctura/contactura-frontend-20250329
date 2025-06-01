@@ -16,6 +16,10 @@
         <mat-icon fontIcon="payments"></mat-icon>
         <span>Lançamentos</span>
       </button>
+      <button mat-menu-item [matMenuTriggerFor]="usuario">
+        <mat-icon fontIcon="account_circle"></mat-icon>
+        <span>Usuario</span>
+      </button>
     </mat-menu>
   
     <mat-menu #relatorios="matMenu">
@@ -37,6 +41,17 @@
       <button mat-menu-item (click)="onNavigate('lancamentos/despesa')" [disabled]="estouLancamentoDespesa">
         <mat-icon fontIcon="shopping_bag"></mat-icon>
         <span>Lançamento de Despesas</span>
+      </button>
+    </mat-menu>
+
+    <mat-menu #usuario="matMenu">
+      <button mat-menu-item (click)="onNavigate('usuario/alterar-senha')" [disabled]="estouAlterarSenha">
+        <mat-icon fontIcon="key"></mat-icon>
+        <span>Alterar Senha</span>
+      </button>
+      <button mat-menu-item (click)="onNavigate('usuario/editar')" [disabled]="estouEditarUsuario">
+        <mat-icon fontIcon="edit"></mat-icon>
+        <span>Editar</span>
       </button>
     </mat-menu>
   

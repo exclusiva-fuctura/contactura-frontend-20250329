@@ -39,6 +39,14 @@ export class MenuComponent {
     return this.menuService.ondeEstou === MenuTypeEnum.LANCAMENTO_DESPESA;
   }
 
+  get estouAlterarSenha(): boolean {
+    return this.menuService.ondeEstou === MenuTypeEnum.ALTERAR_SENHA;
+  }
+
+  get estouEditarUsuario(): boolean {
+    return this.menuService.ondeEstou === MenuTypeEnum.EDITAR_USUARIO;
+  }
+  
   onNavigate(valor: string): void {
     this.router.navigate([valor]);
   }

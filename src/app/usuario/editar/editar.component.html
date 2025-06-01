@@ -1,0 +1,45 @@
+<div class="container">
+  <!-- menu -->
+  <app-menu></app-menu>
+  <!-- logout -->
+  <app-logout></app-logout>    
+  
+  <h1>EDITAR USUÁRIO</h1>
+
+    <form [formGroup]="formulario" novalidate>
+    <mat-grid-list cols="4" rowHeight="2:1">
+      <!-- linha 1 -->
+      <mat-grid-tile class="coluna" colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" type="nome">
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- linha 2 -->
+      <mat-grid-tile class="coluna" colspan="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" type="text" telefone>
+          <mat-error *ngIf="formulario.get('telefone')?.invalid">
+            Campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- linha 3 -->
+      <mat-grid-tile class="coluna" colspan="2">
+        <mat-form-field appearance="fill" class="input-email">
+          <mat-label>email</mat-label>
+          <input matInput formControlName="email" type="text">
+          <mat-error *ngIf="formulario.get('email')?.invalid">
+            Informe um e-mail válido
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>          
+      <!-- linha 3 -->
+      <mat-grid-tile class="coluna" colspan="4">
+        <button mat-raised-button (click)="onLimpar()">Limpar</button>
+        <button mat-raised-button color="primary" [disabled]="formulario.invalid" (click)="onSalvar()">Salvar</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>    

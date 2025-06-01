@@ -1,0 +1,53 @@
+<div class="container">
+  <!-- menu -->
+  <app-menu></app-menu>
+  <!-- logout -->
+  <app-logout></app-logout>    
+  
+  <h1>ALTERAR SENHA</h1>
+
+    <form [formGroup]="formulario" novalidate>
+    <mat-grid-list cols="4" rowHeight="2:1">
+      <!-- linha 1 -->
+      <mat-grid-tile class="coluna" colspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" type="nome" readonly="true">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile class="coluna" colspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" type="text" telefone>
+          <mat-error *ngIf="formulario.get('telefone')?.invalid">
+            Campo obrigatório
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- linha 2 -->
+      <mat-grid-tile class="coluna" colspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Nova Senha</mat-label>
+          <input matInput formControlName="senha" type="password">
+          <mat-error *ngIf="formulario.get('senha')?.invalid">
+            mínimo 5 caracteres
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile class="coluna" colspan="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Confirme a Senha</mat-label>
+          <input matInput formControlName="confirmarSenha" type="password">
+          <mat-error *ngIf="formulario.get('confirmarSenha')?.invalid">
+            As senhas precisam ser iguais
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>          
+      <!-- linha 3 -->
+      <mat-grid-tile class="coluna" colspan="4">
+        <button mat-raised-button (click)="onLimpar()">Limpar</button>
+        <button mat-raised-button color="primary" [disabled]="formulario.invalid" (click)="onAlterar()">Alterar</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>    
