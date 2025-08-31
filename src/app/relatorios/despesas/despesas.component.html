@@ -11,14 +11,22 @@
       <mat-grid-list cols="4" rowHeight="4:1">
         <mat-grid-tile class="coluna"></mat-grid-tile>
         <mat-grid-tile class="coluna"></mat-grid-tile>
-        <mat-grid-tile class="coluna"></mat-grid-tile>
         <mat-grid-tile class="coluna">
           <mat-form-field appearance="fill">
-            <mat-label>Data da Despesa</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="data">
+            <mat-label>Data Inicial</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dataInicial">
             <mat-hint>DD/MM/AAAA</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile class="coluna">
+          <mat-form-field appearance="fill">
+            <mat-label>Data Final</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dataFinal">
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
           <button mat-raised-button color="primary" class="btn-search" (click)="onPequisar()">
             <mat-icon aria-hidden="false" matTooltip="Filtrar">search</mat-icon>

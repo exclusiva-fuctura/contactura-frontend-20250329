@@ -61,8 +61,14 @@ export class ReceitasComponent {
       next: (response) => {
         if (response.status === HttpStatusCode.Ok) {
           const lancamentos = response.body ? response.body : [];
-          const {data} = this.formulario.value;
-          this.dataSource = lancamentos.filter(lanc => lanc.ehReceita === false && moment(data).format('YYYY-MM-DD') === lanc.data);
+          const {dataInicial, dataFinal} = this.formulario.value;
+          this.dataSource = lancamentos.filter(lanc => lanc.ehReceita === true && (
+            ( moment(lanc.data,'YYYY-MM-DD').isBefore(moment(dataInicial,'YYYY-MM-DD')) &&
+              moment(lanc.data,'YYYY-MM-DD').isAfter(moment(dataFinal,'YYYY-MM-DD')) ) ||
+            ( moment(lanc.data,'YYYY-MM-DD').isSame(moment(dataInicial,'YYYY-MM-DD')) ||
+              moment(lanc.data,'YYYY-MM-DD').isSame(moment(dataFinal,'YYYY-MM-DD')) )
+            )
+          );
         }
       }
     });
@@ -71,7 +77,8 @@ export class ReceitasComponent {
   private iniciarFormulario(): void {
     const hoje = moment().format();
     this.formulario = this.formBuilder.group({
-      data: hoje
+      dataInicial: hoje,
+      dataFinal: hoje
     });
   }
 
