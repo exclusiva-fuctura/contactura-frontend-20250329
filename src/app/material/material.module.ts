@@ -10,6 +10,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon'
 import { DefaultMatCalendarRangeStrategy, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -26,6 +27,7 @@ export const material = [
   MatDatepickerModule,
   MatNativeDateModule, 
   MatMomentDateModule,
+  MatProgressSpinnerModule,
   MatSlideToggleModule,
 ];
 
