@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -22,6 +23,7 @@ export const material = [
   MatTableModule,
   MatButtonModule,
   MatSelectModule,
+  MatTooltipModule,
   MatGridListModule,
   MatPaginatorModule,
   MatDatepickerModule,

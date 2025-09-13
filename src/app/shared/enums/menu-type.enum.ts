@@ -5,6 +5,7 @@ export enum MenuTypeEnum {
   RECUPERAR_SENHA = 'recuperar_senha',
   RELATORIO_DESPESA = 'relat_despesa',
   RELATORIO_RECEITA = 'relat_receita',
+  RELATORIO_BALANCETE = 'relat_balancete',
   LANCAMENTO_DESPESA = 'lanc_despesa',
   LANCAMENTO_RECEITA = 'lanc_receita',
   ALTERAR_SENHA = 'alterar_senha',

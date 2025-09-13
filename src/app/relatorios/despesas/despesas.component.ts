@@ -63,8 +63,8 @@ export class DespesasComponent {
           const lancamentos = response.body ? response.body : [];
           const {dataInicial, dataFinal} = this.formulario.value;
           this.dataSource = lancamentos.filter(lanc => lanc.ehReceita === false && (
-            ( moment(lanc.data,'YYYY-MM-DD').isBefore(moment(dataInicial,'YYYY-MM-DD')) &&
-              moment(lanc.data,'YYYY-MM-DD').isAfter(moment(dataFinal,'YYYY-MM-DD')) ) ||
+            ( moment(lanc.data,'YYYY-MM-DD').isAfter(moment(dataInicial,'YYYY-MM-DD')) &&
+              moment(lanc.data,'YYYY-MM-DD').isBefore(moment(dataFinal,'YYYY-MM-DD')) ) ||
             ( moment(lanc.data,'YYYY-MM-DD').isSame(moment(dataInicial,'YYYY-MM-DD')) ||
               moment(lanc.data,'YYYY-MM-DD').isSame(moment(dataFinal,'YYYY-MM-DD')) )
             )  
@@ -76,8 +76,9 @@ export class DespesasComponent {
 
   private iniciarFormulario(): void {
     const hoje = moment().format();
+    const inicioMes = moment().startOf('month').format();
     this.formulario = this.formBuilder.group({
-      dataInicial: hoje,
+      dataInicial: inicioMes,
       dataFinal: hoje
     });
   }

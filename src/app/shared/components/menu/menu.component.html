@@ -31,6 +31,10 @@
         <mat-icon fontIcon="shopping_cart"></mat-icon>
         <span>Relatório de Despesas</span>
       </button>
+      <button mat-menu-item (click)="onNavigate('relatorio-balancete')" [disabled]="estouRelatorioBalancete">
+        <mat-icon fontIcon="account_balance_wallet"></mat-icon>
+        <span>Relatório Balancete</span>
+      </button>
     </mat-menu>
   
     <mat-menu #lancamentos="matMenu">

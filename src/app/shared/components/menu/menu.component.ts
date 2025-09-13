@@ -31,6 +31,10 @@ export class MenuComponent {
     return this.menuService.ondeEstou === MenuTypeEnum.RELATORIO_DESPESA;
   }
 
+  get estouRelatorioBalancete(): boolean {
+    return this.menuService.ondeEstou === MenuTypeEnum.RELATORIO_BALANCETE;
+  }
+
   get estouLancamentoReceita(): boolean {
     return this.menuService.ondeEstou === MenuTypeEnum.LANCAMENTO_RECEITA;
   }
